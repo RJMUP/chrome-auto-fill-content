@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Auto Fill Content",
+    "version": "1.1.0",
+    "description": "自动填充网页表单内容，支持自定义配置网页地址和填充内容。",
+    "permissions": ["storage", "scripting", "activeTab"],
+    "options_page": "options.html",
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content_script.js"],
+            "all_frames": true
+        }
+    ],
+    "host_permissions": ["http://*/*", "https://*/*"]
+}

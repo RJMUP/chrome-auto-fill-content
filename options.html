@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Fill Content</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Auto Fill Content</h1>
+            <p class="subtitle">配置网页地址、界面元素和自动填充内容</p>
+        </header>
+
+        <main>
+            <!-- 添加规则区域 -->
+            <section class="add-rule-section">
+                <h2>添加填充规则</h2>
+                <div class="form-card">
+                    <div class="form-row">
+                        <div class="form-group flex-2">
+                            <label for="ruleUrl">网页地址匹配</label>
+                            <input type="text" id="ruleUrl" placeholder="例如: https://sso.example.com 或 http://192.168.1.1:8080">
+                            <span class="hint">支持完整URL或前缀匹配，留空则匹配所有页面</span>
+                        </div>
+                        <div class="form-group flex-1">
+                            <label for="ruleName">规则名称</label>
+                            <input type="text" id="ruleName" placeholder="例如: 统一身份认证">
+                        </div>
+                    </div>
+
+                    <!-- 字段列表 -->
+                    <div class="fields-container">
+                        <h3>填充字段 <span class="field-hint">（建议：先打开目标网页并填写好值，再通过 🎯 按钮选取元素，选择器和值会自动带入）</span></h3>
+                        <div id="fieldsList"></div>
+                        <button type="button" id="btnAddField" class="btn btn-outline">+ 添加字段</button>
+                        <div class="picker-hint" id="pickerHint" style="display:none;">
+                            <span class="picker-dot"></span>
+                            <span>元素选取模式已开启 — 点击页面元素即可获取 CSS 选择器，同时自动带回当前值作为填充值</span>
+                            <button type="button" id="btnCancelPicker" class="btn btn-ghost-small">取消</button>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="btnSaveRule" class="btn btn-primary">保存规则</button>
+                        <button type="button" id="btnCancelEdit" class="btn btn-ghost" style="display:none;">取消编辑</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 已保存规则列表 -->
+            <section class="rules-list-section">
+                <h2>已保存的规则 <span id="ruleCount" class="badge">0</span></h2>
+                <div id="rulesList">
+                    <div class="empty-state">暂无规则，请添加一条填充规则</div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <button type="button" id="btnExport" class="btn btn-outline-small">导出配置</button>
+            <button type="button" id="btnImport" class="btn btn-outline-small">导入配置</button>
+            <button type="button" id="btnReset" class="btn btn-danger-small">清除所有配置</button>
+        </footer>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>
